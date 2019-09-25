@@ -28,14 +28,24 @@ const Search = () => {
   };
 
   return (
-    <div>
-      <SearchInput
-        value={ingredients}
-        handleOnChange={handleSearchInputChange}
-        handleOnSubmit={handleSearchSubmit}
-      />
-      {recipes.length ? <RecipesList recipes={recipes} /> : null}
-    </div>
+    <>
+      <div className="section">
+        <div className="container">
+          <SearchInput
+            value={ingredients}
+            handleOnChange={handleSearchInputChange}
+            handleOnSubmit={handleSearchSubmit}
+          />
+        </div>
+      </div>
+      {recipes.length ? (
+        <div className="section">
+          <div className="container">
+            <RecipesList recipes={recipes} />
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 

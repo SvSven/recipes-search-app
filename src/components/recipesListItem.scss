@@ -1,0 +1,20 @@
+.recipe {
+    &-thumbnail {
+        margin-right: 1em;
+    }
+
+    &-content {
+        flex-grow: 1;
+
+        &-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0 0 3px 0;
+        }
+
+        &-ingredients {
+            font-style: italic
+        }
+    }
+}

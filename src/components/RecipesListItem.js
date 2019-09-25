@@ -1,12 +1,23 @@
 import React from "react";
 
+import "./recipesListItem.scss";
+
 const RecipesListItem = props => {
   return (
-    <div>
-      <p>{props.title}</p>
-      <p>{props.ingredients}</p>
-      <img src={props.thumbnail} alt="" />
-    </div>
+    <a
+      href={props.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="box is-flex recipe"
+    >
+      <div className="recipe-thumbnail">
+        <img src={props.thumbnail} alt="" />
+      </div>
+      <div className="recipe-content">
+        <h3 className="recipe-content-title">{props.title}</h3>
+        <p className="recipe-content-ingredients">{props.ingredients}</p>
+      </div>
+    </a>
   );
 };
 
