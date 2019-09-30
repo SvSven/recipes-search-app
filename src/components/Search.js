@@ -3,11 +3,13 @@ import Axios from "axios";
 
 import SearchInput from "./SearchInput";
 import RecipesList from "./RecipesList";
+import Loader from "./Loader";
 
 const Search = () => {
   const [ingredients, setIngredients] = useState("");
   const [searchString, setSearchString] = useState(null);
   const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
   const API_HOST = "http://www.recipepuppy.com/api/";
@@ -19,6 +21,8 @@ const Search = () => {
   const handleSearchSubmit = async event => {
     event.preventDefault();
 
+    setIsLoading(true);
+
     // recipepuppy doesn't allow cors, use corsAnywhere for testing
     const response = await Axios.get(corsAnywhere + API_HOST, {
       params: {
@@ -29,6 +33,7 @@ const Search = () => {
     setSearchString(ingredients);
     setIngredients("");
     setRecipes(response.data.results);
+    setIsLoading(false);
   };
 
   return (
@@ -60,6 +65,9 @@ const Search = () => {
           </div>
         </div>
       </div>
+
+      {isLoading ? <Loader /> : null}
+
       {searchString ? (
         <div className="section">
           <div className="container">
