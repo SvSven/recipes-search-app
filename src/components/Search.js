@@ -6,6 +6,7 @@ import RecipesList from "./RecipesList";
 
 const Search = () => {
   const [ingredients, setIngredients] = useState("");
+  const [searchString, setSearchString] = useState(null);
   const [recipes, setRecipes] = useState([]);
 
   const handleSearchInputChange = event => {
@@ -23,6 +24,8 @@ const Search = () => {
         i: ingredients
       }
     }).then(response => {
+      setSearchString(ingredients);
+      setIngredients("");
       setRecipes(response.data.results);
     });
   };
@@ -47,7 +50,7 @@ const Search = () => {
       {recipes.length ? (
         <div className="section">
           <div className="container">
-            <h3 className="title is-3">Showing recipes for "{ingredients}"</h3>
+            <h3 className="title is-3">Showing recipes for "{searchString}"</h3>
             <RecipesList recipes={recipes} />
           </div>
         </div>
