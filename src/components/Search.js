@@ -36,14 +36,26 @@ const Search = () => {
       <div className="section">
         <div className="container">
           <div className="box" style={{ textAlign: "center" }}>
-            <h1 className="title is-2">Recipe finder</h1>
+            <h1 className="title is-2" style={{ marginBottom: "0.5rem" }}>
+              Recipe finder
+            </h1>
+            <p style={{ marginBottom: "1rem" }}>
+              Enter a list of ingredients, seperated by commas
+            </p>
             <SearchInput
               value={ingredients}
               handleOnChange={handleSearchInputChange}
               handleOnSubmit={handleSearchSubmit}
             />
-            <p style={{ marginTop: "1em" }}>
-              Enter a list of ingredients, seperated by commas
+            <p style={{ marginTop: "1rem" }}>
+              Recipes via{" "}
+              <a
+                href="http://www.recipepuppy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RecipePuppy
+              </a>
             </p>
           </div>
         </div>
