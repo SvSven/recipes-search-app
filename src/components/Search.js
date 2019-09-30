@@ -21,6 +21,7 @@ const Search = () => {
   const handleSearchSubmit = async event => {
     event.preventDefault();
 
+    resetSearch();
     setIsLoading(true);
 
     // recipepuppy doesn't allow cors, use corsAnywhere for testing
@@ -34,6 +35,12 @@ const Search = () => {
     setIngredients("");
     setRecipes(response.data.results);
     setIsLoading(false);
+  };
+
+  const resetSearch = () => {
+    setSearchString("");
+    setIngredients("");
+    setRecipes("");
   };
 
   return (
