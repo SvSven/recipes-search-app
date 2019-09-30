@@ -48,11 +48,23 @@ const Search = () => {
           </div>
         </div>
       </div>
-      {recipes.length ? (
+      {searchString ? (
         <div className="section">
           <div className="container">
-            <h3 className="title is-3">Showing recipes for "{searchString}"</h3>
-            <RecipesList recipes={recipes} />
+            {recipes.length ? (
+              <>
+                <h3 className="title is-3">
+                  Showing recipes for "{searchString}"
+                </h3>
+                <RecipesList recipes={recipes} />{" "}
+              </>
+            ) : (
+              <>
+                <h3 className="title is-3">
+                  No results found for "{searchString}"
+                </h3>
+              </>
+            )}
           </div>
         </div>
       ) : null}
