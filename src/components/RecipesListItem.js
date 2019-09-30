@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./recipesListItem.scss";
-
 const RecipesListItem = props => {
   return (
     <a

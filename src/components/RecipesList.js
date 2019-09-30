@@ -1,9 +1,11 @@
 import React from "react";
 import RecipesListItem from "./RecipesListItem";
 
+import "./recipes-list.scss";
+
 const RecipesList = props => {
   return (
-    <div>
+    <div id="recipes-list">
       {props.recipes.map(recipe => {
         return (
           <RecipesListItem

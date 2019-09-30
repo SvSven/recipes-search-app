@@ -31,16 +31,23 @@ const Search = () => {
     <>
       <div className="section">
         <div className="container">
-          <SearchInput
-            value={ingredients}
-            handleOnChange={handleSearchInputChange}
-            handleOnSubmit={handleSearchSubmit}
-          />
+          <div className="box" style={{ textAlign: "center" }}>
+            <h1 className="title is-2">Recipe finder</h1>
+            <SearchInput
+              value={ingredients}
+              handleOnChange={handleSearchInputChange}
+              handleOnSubmit={handleSearchSubmit}
+            />
+            <p style={{ marginTop: "1em" }}>
+              Enter a list of ingredients, seperated by commas
+            </p>
+          </div>
         </div>
       </div>
       {recipes.length ? (
         <div className="section">
           <div className="container">
+            <h3 className="title is-3">Showing recipes for "{ingredients}"</h3>
             <RecipesList recipes={recipes} />
           </div>
         </div>
