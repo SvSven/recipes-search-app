@@ -9,25 +9,26 @@ const Search = () => {
   const [searchString, setSearchString] = useState(null);
   const [recipes, setRecipes] = useState([]);
 
+  const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+  const API_HOST = "http://www.recipepuppy.com/api/";
+
   const handleSearchInputChange = event => {
     setIngredients(event.target.value);
   };
 
-  const handleSearchSubmit = event => {
+  const handleSearchSubmit = async event => {
     event.preventDefault();
 
-    // recipepuppy doesn't allow cors, use this proxy for testing
-    const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-
-    Axios.get(corsAnywhere + "http://www.recipepuppy.com/api/", {
+    // recipepuppy doesn't allow cors, use corsAnywhere for testing
+    const response = await Axios.get(corsAnywhere + API_HOST, {
       params: {
         i: ingredients
       }
-    }).then(response => {
-      setSearchString(ingredients);
-      setIngredients("");
-      setRecipes(response.data.results);
     });
+
+    setSearchString(ingredients);
+    setIngredients("");
+    setRecipes(response.data.results);
   };
 
   return (
